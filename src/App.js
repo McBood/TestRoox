@@ -13,7 +13,7 @@ function App() {
     const data = await res.json()
     setUsers(data)
     }, [])
-
+    const count = Object.keys(users).length;
   return (
     <div className='usersList'>
       <div className='usersList__sidebar'>
@@ -33,7 +33,7 @@ function App() {
                 company={user.company.name}/>
             </div>
           ))}
-          <span>Найдено 10 пользователей</span>
+          <span>Найдено {count} пользователей</span>
         </div>
       </div>
     </div>
