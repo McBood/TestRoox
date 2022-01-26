@@ -17,22 +17,29 @@ function App() {
 
     const count = Object.keys(users).length;
 
-    const newArr = users
-    function sortArray(x,y) {
-      if(x.address.city < y.address.city) {return -1}
-      if(x.address.city > y.address.city) {return 1}
-      return 0
+    function sortCity () {
+      users.sort((x,y) => {
+        if(x.address.city < y.address.city) {return -1}
+        if(x.address.city > y.address.city) {return 1}
+        return 0
+      })
     }
 
-    const s = newArr.sort(sortArray)
-    console.log(s)
+    function sortCompany () {
+      users.sort((x,y) => {
+        if(x.company.name < y.company.name) {return -1}
+        if(x.company.name > y.company.name) {return 1}
+        return 0
+    })
+  }
+  console.log(users)
 
   return (
     <div className='usersList'>
       <div className='usersList__sidebar'>
       <span>Сортировка</span>
-      <SortButton onclick={s} text="по городу" />
-      <SortButton onclick text="по компании"/>
+      <SortButton onclick={sortCity} text="по городу" />
+      <SortButton onclick={sortCompany} text="по компании"/>
       </div>
       <div className="usersList__lists">
         <h3>Список пользователей</h3>
