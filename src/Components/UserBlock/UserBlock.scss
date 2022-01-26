@@ -1,0 +1,39 @@
+.userBlock {
+  position: relative;
+  display: flex;
+  box-sizing: border-box;
+  width: 420px;
+  height: 73px;
+  padding: 10px;
+  background-color: #f3f3f3;
+  border-radius: 8px;
+  font-size: 11px;
+  line-height: 13px;
+
+  button {
+    padding-right: 10px;
+    background: none;
+    border: none;
+    color: #4b51ef;
+    font-size: 12px;
+    line-height: 14px;
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    cursor: pointer;
+  }
+
+  &__info strong {
+    font-weight: normal;
+    color: #a3a3a3;
+  }
+
+  &__info div {
+    padding-bottom: 7px;
+    font-weight: 500;
+  }
+
+  &__info div:nth-child(3) {
+    padding-bottom: 0;
+  }
+}
