@@ -1,12 +1,19 @@
-import React from "react"
+import React, {useState} from "react"
 import SortButton from './Components/SortButtons/sortButton';
+import useAsyncEffect from "use-async-effect";
 import './App.css';
 
-import DB from "./assets/DB.json"
 import UserBlock from "./Components/UserBlock/UserBlock";
-let obj = JSON.parse(DB)
 
 function App() {
+  const [users,setUsers] = useState([])
+
+  useAsyncEffect(async () => {
+    const res = await fetch('https://jsonplaceholder.typicode.com/users')
+    const data = await res.json()
+    setUsers(data)
+    }, [])
+
   return (
     <div className='usersList'>
       <div className='usersList__sidebar'>
@@ -17,7 +24,16 @@ function App() {
       <div className="usersList__lists">
         <h3>Список пользователей</h3>
         <div className="usersList__items">
-          <UserBlock props={obj}/>
+          {users.map(user => (
+            <div className="usersList__userCard">
+              <UserBlock
+                key={user.id}
+                name={user.name}
+                city={user.address.city}
+                company={user.company.name}/>
+            </div>
+          ))}
+          <span>Найдено 10 пользователей</span>
         </div>
       </div>
     </div>
