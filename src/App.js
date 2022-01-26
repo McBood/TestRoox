@@ -13,13 +13,26 @@ function App() {
     const data = await res.json()
     setUsers(data)
     }, [])
+    console.log(users)
+
     const count = Object.keys(users).length;
+
+    const newArr = users
+    function sortArray(x,y) {
+      if(x.address.city < y.address.city) {return -1}
+      if(x.address.city > y.address.city) {return 1}
+      return 0
+    }
+
+    const s = newArr.sort(sortArray)
+    console.log(s)
+
   return (
     <div className='usersList'>
       <div className='usersList__sidebar'>
       <span>Сортировка</span>
-      <SortButton text="по городу" />
-      <SortButton text="по компании"/>
+      <SortButton onclick={s} text="по городу" />
+      <SortButton onclick text="по компании"/>
       </div>
       <div className="usersList__lists">
         <h3>Список пользователей</h3>
@@ -39,5 +52,6 @@ function App() {
     </div>
   );
 }
+
 
 export default App;
