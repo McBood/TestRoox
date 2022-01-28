@@ -2,7 +2,7 @@ import React from "react"
 
 import "./sortButton.scss"
 
-const SortButton = ({text,onclick}) => <button onClick={onclick} className="sortButton">{text}</button>
+const SortButton = ({text,button}) => <button onClick={() => button()}  className="sortButton">{text}</button>
 
 
 

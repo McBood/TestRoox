@@ -18,19 +18,23 @@ function App() {
     const count = Object.keys(users).length;
 
     function sortCity () {
-      users.sort((x,y) => {
+      const sortedUsersByCity = [...users]
+      sortedUsersByCity.sort((x,y) => {
         if(x.address.city < y.address.city) {return -1}
         if(x.address.city > y.address.city) {return 1}
         return 0
       })
+      setUsers(sortedUsersByCity)
     }
 
     function sortCompany () {
-      users.sort((x,y) => {
+      const sortedUsersByCompany = [...users]
+      sortedUsersByCompany.sort((x,y) => {
         if(x.company.name < y.company.name) {return -1}
         if(x.company.name > y.company.name) {return 1}
         return 0
     })
+    setUsers(sortedUsersByCompany)
   }
   console.log(users)
 
@@ -38,8 +42,8 @@ function App() {
     <div className='usersList'>
       <div className='usersList__sidebar'>
       <span>Сортировка</span>
-      <SortButton onclick={sortCity} text="по городу" />
-      <SortButton onclick={sortCompany} text="по компании"/>
+      <SortButton button={sortCity} text="по городу" />
+      <SortButton button={sortCompany} text="по компании"/>
       </div>
       <div className="usersList__lists">
         <h3>Список пользователей</h3>
