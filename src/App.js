@@ -1,19 +1,23 @@
 import React, {useState} from "react"
 import SortButton from './Components/SortButtons/sortButton';
 import useAsyncEffect from "use-async-effect";
+import { Router, Route } from "react-router-dom";
+import preloader from "./assets/preloader.svg"
 import './App.css';
 
 import UserBlock from "./Components/UserBlock/UserBlock";
 
 function App() {
+  const [isLoaded = true,setIsLoaded] = useState(true)
   const [users,setUsers] = useState([])
 
   useAsyncEffect(async () => {
     const res = await fetch('https://jsonplaceholder.typicode.com/users')
     const data = await res.json()
     setUsers(data)
-    }, [])
+    setIsLoaded(false)
     console.log(users)
+  })
 
     const count = Object.keys(users).length;
 
@@ -47,7 +51,8 @@ function App() {
       </div>
       <div className="usersList__lists">
         <h3>Список пользователей</h3>
-        <div className="usersList__items">
+        {isLoaded ? <img src={preloader} alt="preloader"/> : (
+          <div className="usersList__items">
           {users.map(user => (
             <div className="usersList__userCard">
               <UserBlock
@@ -58,7 +63,7 @@ function App() {
             </div>
           ))}
           <span>Найдено {count} пользователей</span>
-        </div>
+        </div>)}
       </div>
     </div>
   );
