@@ -1,6 +1,16 @@
 import React from "react"
-import "./profile.scss"
 import SortButton from "../Components/SortButtons/sortButton"
+import styled from "styled-components"
+
+import "./profile.scss"
+
+const ModifiedButton = styled(SortButton)`
+padding: 6px 11px;
+margin: 0;
+position: absolute;
+right: 0;
+margin-right: 45px;
+`;
 
 const Profile = () => {
     return (   
@@ -11,7 +21,10 @@ const Profile = () => {
         <SortButton  text="по компании"/>
         </div>
         <div className="usersList__lists">
-          <h3>Профиль пользователя</h3>
+        <div className="header">
+        <h3 className="header__profile">Профиль пользователя</h3>
+        <ModifiedButton text="Редактировать"></ModifiedButton>
+        </div>
         </div>
         </div>
       

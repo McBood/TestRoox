@@ -4,7 +4,7 @@ import SortButton from "../SortButtons/sortButton"
 import UserBlock from "../UserBlock/UserBlock"
 import preloader from "../../assets/preloader.svg"
 
-import "../../App.css"
+import "../../index.scss"
 
 
 const ListUsers = () => {
@@ -49,7 +49,7 @@ const ListUsers = () => {
         <SortButton button={sortCompany} text="по компании"/>
         </div>
         <div className="usersList__lists">
-          <h3>Список пользователей</h3>
+          <h3 className="main-header">Список пользователей</h3>
           {isLoaded ? <img src={preloader} alt="preloader"/> : (
             <div className="usersList__items">
             {users.map(user => (
