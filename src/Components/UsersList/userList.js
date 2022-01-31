@@ -61,7 +61,7 @@ const ListUsers = () => {
                   company={user.company.name}/>
               </div>
             ))}
-            <span>Найдено {count} пользователей</span>
+            <span className="counter">Найдено {count} пользователей</span>
           </div>)}
         </div>
       </div>
