@@ -16,11 +16,12 @@ const Button = styled.button`
   line-height: 14px;
   font-size: 12px;
   cursor: pointer;
+  text-decoration: none;
 `
 
-const SortButton = ({text,button,className}) => {
+const SortButton = ({text,button,className, dis}) => {
     return (
-        <Button className={className} onClick={() => button()} >{text}</Button>
+        <Button disabled={dis} className={className} onClick={() => button()} >{text}</Button>
     )
 } 
 

@@ -9,6 +9,7 @@
   border-radius: 8px;
   font-size: 11px;
   line-height: 13px;
+  text-decoration: none;
 
   button {
     padding-right: 10px;
@@ -21,6 +22,12 @@
     right: 0;
     bottom: 10px;
     cursor: pointer;
+    text-decoration: none;
+  }
+
+  a {
+    text-decoration: none;
+    color: #4b51ef;
   }
 
   &__info strong {

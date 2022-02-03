@@ -16,12 +16,12 @@ const ListUsers = () => {
       const data = await res.json()
       setUsers(data)
       setIsLoaded(false)
-      console.log(users)
     }, [])
   
       const count = Object.keys(users).length;
   
       function sortCity () {
+        setIsLoaded(true)
         const sortedUsersByCity = [...users]
         sortedUsersByCity.sort((x,y) => {
           if(x.address.city < y.address.city) {return -1}
@@ -29,9 +29,11 @@ const ListUsers = () => {
           return 0
         })
         setUsers(sortedUsersByCity)
+        setIsLoaded(false)
       }
   
       function sortCompany () {
+        setIsLoaded(true)
         const sortedUsersByCompany = [...users]
         sortedUsersByCompany.sort((x,y) => {
           if(x.company.name < y.company.name) {return -1}
@@ -39,8 +41,8 @@ const ListUsers = () => {
           return 0
       })
       setUsers(sortedUsersByCompany)
+      setIsLoaded(false)
     }
-    console.log(users)
     return (
         <div className='usersList'> 
         <div className='usersList__sidebar'>

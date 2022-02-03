@@ -21,7 +21,6 @@ const Profile = () => {
 
     function readOnly () {
         const el = document.getElementsByClassName("sendBut")[0]
-        console.log(el)
         const newReadBull = readBull
         newReadBull ? readBull = false : readBull = true
         setIsReadOnly(readBull)
@@ -36,8 +35,8 @@ const Profile = () => {
         <div className='usersList'> 
         <div className='usersList__sidebar'>
         <span>Сортировка</span>
-        <SortButton text="по городу" />
-        <SortButton text="по компании"/>
+        <SortButton dis="disabled" text="по городу" />
+        <SortButton dis="disabled" text="по компании"/>
         </div>
         <div className="usersList__lists">
         <div className="header">
@@ -45,7 +44,7 @@ const Profile = () => {
         <ModifiedButton  button={readOnly} text="Редактировать"></ModifiedButton>
         </div>
         <div className="info-block">
-            <Field readBull={readBull} text="Name" placeholder="Иван Иванов"/>
+            <Field  readBull={readBull} text="Name" placeholder="Иван Иванов"/>
             <Field readBull={readBull} text="User name" placeholder="Ivan"/>
             <Field readBull={readBull} text="E-mail" placeholder="example@mail.com"/>
             <Field readBull={readBull} text="Street" placeholder="ул. Пример"/>
@@ -53,7 +52,7 @@ const Profile = () => {
             <Field readBull={readBull} text="Zip code" placeholder="1234234"/>
             <Field readBull={readBull}  text="Phone" placeholder="89991112233"/>
             <Field readBull={readBull} text="Website" placeholder="www.example.com"/>
-            <Field readBull={readBull} text="Comment" placeholder=""/>
+            <Field req={false} readBull={readBull} text="Comment" placeholder=""/>
         </div>
             <SendButton text="Отправить"/>
         </div>
