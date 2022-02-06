@@ -2,6 +2,7 @@ import React, {useState} from "react"
 import SortButton from "../Components/SortButtons/sortButton"
 import styled from "styled-components"
 
+
 import "./profile.scss"
 import Field from "../Components/InfoFields/fields";
 import SendButton from "../Components/SendButton/sendButton";
@@ -14,9 +15,10 @@ right: 0;
 margin-right: 28px;
 `;
 
-const Profile = () => {
+const Profile = ({user}) => {
 
     const [isReadOnly,setIsReadOnly] = useState(true)
+
     var readBull = isReadOnly
 
     function readOnly () {
@@ -44,7 +46,7 @@ const Profile = () => {
         <ModifiedButton  button={readOnly} text="Редактировать"></ModifiedButton>
         </div>
         <div className="info-block">
-            <Field  readBull={readBull} text="Name" placeholder="Иван Иванов"/>
+            <Field readBull={readBull} value="user.id" text="Name"/>
             <Field readBull={readBull} text="User name" placeholder="Ivan"/>
             <Field readBull={readBull} text="E-mail" placeholder="example@mail.com"/>
             <Field readBull={readBull} text="Street" placeholder="ул. Пример"/>

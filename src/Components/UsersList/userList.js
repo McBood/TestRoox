@@ -7,40 +7,37 @@ import preloader from "../../assets/preloader.svg"
 import "../../index.scss"
 
 
-const ListUsers = () => {
+const ListUsers = ({users, onUserClick}) => {
     const [isLoaded,setIsLoaded] = useState(true)
-    const [users,setUsers] = useState([])
+    const [user,setUser] = useState(users)
   
     useAsyncEffect(async () => {
-      const res = await fetch('https://jsonplaceholder.typicode.com/users')
-      const data = await res.json()
-      setUsers(data)
       setIsLoaded(false)
     }, [])
   
-      const count = Object.keys(users).length;
+      const count = Object.keys(user).length;
   
       function sortCity () {
         setIsLoaded(true)
-        const sortedUsersByCity = [...users]
+        const sortedUsersByCity = [...user]
         sortedUsersByCity.sort((x,y) => {
           if(x.address.city < y.address.city) {return -1}
           if(x.address.city > y.address.city) {return 1}
           return 0
         })
-        setUsers(sortedUsersByCity)
+        setUser(sortedUsersByCity)
         setIsLoaded(false)
       }
   
       function sortCompany () {
         setIsLoaded(true)
-        const sortedUsersByCompany = [...users]
+        const sortedUsersByCompany = [...user]
         sortedUsersByCompany.sort((x,y) => {
           if(x.company.name < y.company.name) {return -1}
           if(x.company.name > y.company.name) {return 1}
           return 0
       })
-      setUsers(sortedUsersByCompany)
+      setUser(sortedUsersByCompany)
       setIsLoaded(false)
     }
     return (
@@ -54,9 +51,10 @@ const ListUsers = () => {
           <h3 className="main-header">Список пользователей</h3>
           {isLoaded ? <img src={preloader} alt="preloader"/> : (
             <div className="usersList__items">
-            {users.map(user => (
+            {user.map(user => (
               <div className="usersList__userCard">
                 <UserBlock
+                  onUserClick={onUserClick}
                   key={user.id}
                   name={user.name}
                   city={user.address.city}
